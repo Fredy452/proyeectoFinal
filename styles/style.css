@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#carouselExampleCaptions img{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+h3{
+    display: flex;
+    justify-content: center;
+    margin: 5rem;
+}
+nav{
+    margin-bottom: 0.5rem;
+}
+#rowCard{
+    margin-bottom: 5rem;
+}
+.card-text{
+        display: -webkit-box; 
+        -webkit-box-orient: vertical; 
+        -webkit-line-clamp: 3; 
+        overflow: hidden;
+}
+
+.card-img-top{
+    height: 250px;
+    object-fit: cover;
+}
+
+#imgGalley:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#btn-card{
+    margin: 1rem 4rem;
+}
+
+#searchD{
+    margin: 0 auto;
+    width: 40%;
+    min-width: 300px;
+}
