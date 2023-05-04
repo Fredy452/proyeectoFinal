@@ -31,7 +31,6 @@ nav{
 }
 
 #imgGalley:hover{
-    opacity: 0.5;
     cursor: pointer;
 }
 
@@ -43,4 +42,24 @@ nav{
     margin: 0 auto;
     width: 40%;
     min-width: 300px;
+}
+
+.img-fluid{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+.img-fluid:hover{
+    opacity: 0.5;
+}
+.row-form{
+    display: flex;
+    justify-content: center;
+}
+#searchForm{
+    width: 40rem;
 }
