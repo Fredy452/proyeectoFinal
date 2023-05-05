@@ -1,24 +1,28 @@
-// Prueba tradución yandex
-// const yandexUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=pdct.1.1.20230504T144258Z.504a536ae0421e6b.fbc26c77bd54170d14f5e6134e8c159011a597fa&text=hello%20world&lang=en-es';
-// const text = 'hello mi name is yandex';
-// const lang = 'en-es';
+// Probando buscador
+// document.getElementById('searchInput').addEventListener('keyup', () => {
+//   const searcTerm = document.getElementById('searchInput').value;
+//   const urlSearch = `https://images-api.nasa.gov/search?q=${searcTerm}`;
+  
+//   fetch(urlSearch)
+//     .then(response => response.json())
+//     .then(data => {
+//       const items = data.collection.items;
+//       const titles = items.map(
+//         item => item.data[0].title
+//       );
+//       console.log(titles);
+//     })
+//     .catch(err => console.log(err));
+// });
 
-// // creamos el fetch
-// fetch(yandexUrl)
-//   .then(response => response.json())
-//   .then(data => {
-//     const traslation = data.text[0];
-//     console.log(`Traduccion: ${traslation}`);
-//   })
-//   .catch(error => console.log(error));
 
 /*Sección Publicaciones Recienes */
 // Obtenemos las fechas de inicio y finalización para enviar a la api
-const startDate = new Date();
-const endDate = new Date();
-endDate.setDate(startDate.getDate() - 6);//restamos 6 dias a la fecha actual 
-const endDateIso = endDate.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
-const startDateIso = startDate.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
+const startD = new Date();
+const endD = new Date();
+endD.setDate(startD.getDate() - 5);//restamos 6 dias a la fecha actual 
+const endDateIso = endD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
+const startDateIso = startD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 
 // Creamos el parametro con las fechas para el fetch
 const apiCount = `https://api.nasa.gov/planetary/apod?api_key=G0LRTNHSzg0Ny6U4qulMbOYIG2JB5MWbPfieYSRK&start_date=${endDateIso}&end_date=${startDateIso}`
@@ -56,7 +60,7 @@ fetch(apiCount)
   }
 //Funcion para mostrar fecha de publicaciones
  function formatDate(date) {
-    const days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    const days = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
     const currentDate = new Date(); //obtenemos la fecha de hoy
     const itemDate = new Date(date) //lo convertimos en objeto
     const diffDates = currentDate.getTime() - itemDate.getTime();//calcular la diferencia en milisiegundos
@@ -64,9 +68,17 @@ fetch(apiCount)
     // console.log(days[itemDate.getDay()])
     // console.log(diffDays)
 
-    if (diffDays === 1) {
+    if (itemDate.getTime() > currentDate.getTime) {
+      console.log("La fecha es mayor a hoy")
+    } else {
+      console.log("La fecha es menor a hoy")
+    }
+
+    if (diffDays === 0) {
+      return "Publicado Recientemente"
+    }else if (diffDays === 1){
       return "Publicado Ayer"
-    } else if (diffDays >= 1 && diffDays <= 6){
+    }else if (diffDays > 1 && diffDays < 6){
       // console.log(days[itemDate.getDay()])
       // console.log(`Pubblicado el dia ${days[itemDate.getDay()]}`)
       return `Pubblicado el dia ${days[itemDate.getDay()]}`
@@ -188,5 +200,38 @@ fetch(apiMonth)
     });
 
   row.innerHTML = cards.join("");
+  }
+}
+
+// Validamos el mes
+function validateMonth() {
+  const monthInput = document.getElementById("monthInput");
+  const monthError = document.getElementById("monthError");
+  const month = parseInt(monthInput.value);
+
+  if (month < 1 || month > 12) {
+    monthError.classList.add('alert', 'alert-danger')
+    monthError.innerHTML = "Ingrese, un mes válido (1-12).";
+    monthInput.setCustomValidity("Invalid");
+  } else {
+    monthError.classList.remove('alert', 'alert-danger')
+    monthError.innerHTML = "";
+    monthInput.setCustomValidity("");
+  }
+}
+// Validamos el año 
+function validateYear() {
+  const yearInput = document.getElementById("yearInput");
+  const monthError = document.getElementById("monthError");
+  const year = parseInt(yearInput.value);
+
+  if (year > 2023 || year < 1995) {
+    monthError.classList.add('alert', 'alert-danger')
+    monthError.innerHTML = "Solo se puede ingresar años comprendidos entre 1995 hasta la fecha";
+    monthInput.setCustomValidity("Invalid");
+  } else {
+    monthError.classList.remove('alert', 'alert-danger')
+    monthError.innerHTML = "";
+    monthInput.setCustomValidity("");
   }
 }

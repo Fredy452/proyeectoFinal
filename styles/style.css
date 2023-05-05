@@ -63,3 +63,11 @@ nav{
 #searchForm{
     width: 40rem;
 }
+
+#lista{
+    margin-right: 10rem;
+    margin-bottom: 2rem;
+    display: none;
+}
+#lista, ul{
+}
