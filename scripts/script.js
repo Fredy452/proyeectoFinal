@@ -12,12 +12,11 @@
 //   })
 //   .catch(error => console.log(error));
 
-
 /*Sección Publicaciones Recienes */
 // Obtenemos las fechas de inicio y finalización para enviar a la api
 const startDate = new Date();
 const endDate = new Date();
-endDate.setDate(startDate.getDate() - 5);//restamos 6 dias a la fecha actual 
+endDate.setDate(startDate.getDate() - 6);//restamos 6 dias a la fecha actual 
 const endDateIso = endDate.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 const startDateIso = startDate.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 
@@ -65,8 +64,8 @@ fetch(apiCount)
     // console.log(days[itemDate.getDay()])
     // console.log(diffDays)
 
-    if (diffDays === 0) {
-      return "Publicado hoy"
+    if (diffDays === 1) {
+      return "Publicado Ayer"
     } else if (diffDays >= 1 && diffDays <= 6){
       // console.log(days[itemDate.getDay()])
       // console.log(`Pubblicado el dia ${days[itemDate.getDay()]}`)
