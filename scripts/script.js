@@ -68,9 +68,9 @@ fetch(apiCount)
      console.log(days[itemDate.getDay()])
     console.log(diffDays)
     
-    if (diffDays === 1) {
+    if (diffDays === 0) {
       return "Publicado Recientemente"
-    }else if (diffDays === 2){
+    }else if (diffDays === 1){
       return "Publicado Ayer"
     }else if (diffDays > 1 && diffDays < 6){
       // console.log(days[itemDate.getDay()])
