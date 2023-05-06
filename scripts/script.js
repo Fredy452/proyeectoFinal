@@ -20,7 +20,7 @@
 // Obtenemos las fechas de inicio y finalización para enviar a la api
 const startD = new Date();
 const endD = new Date();
-endD.setDate(startD.getDate() - 6);//restamos 6 dias a la fecha actual 
+endD.setDate(startD.getDate() - 5);//restamos 6 dias a la fecha actual 
 const endDateIso = endD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 const startDateIso = startD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 
