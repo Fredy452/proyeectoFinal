@@ -1,8 +1,26 @@
+// Probando buscador
+// document.getElementById('searchInput').addEventListener('keyup', () => {
+//   const searcTerm = document.getElementById('searchInput').value;
+//   const urlSearch = `https://images-api.nasa.gov/search?q=${searcTerm}`;
+  
+//   fetch(urlSearch)
+//     .then(response => response.json())
+//     .then(data => {
+//       const items = data.collection.items;
+//       const titles = items.map(
+//         item => item.data[0].title
+//       );
+//       console.log(titles)
+//     })
+//     .catch(err => console.log(err));
+// });
+
+
 /*Sección Publicaciones Recienes */
 // Obtenemos las fechas de inicio y finalización para enviar a la api
 const startD = new Date();
 const endD = new Date();
-endD.setDate(startD.getDate() - 5);//restamos 6 dias a la fecha actual 
+endD.setDate(startD.getDate() - 6);//restamos 6 dias a la fecha actual 
 const endDateIso = endD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 const startDateIso = startD.toISOString().slice(0, 10);// formateamos a YYYY-MM-DD
 
@@ -28,8 +46,7 @@ fetch(apiCount)
           <div class="card-body">
               <h5 class="card-title">${item.title}</h5>
               <p class="card-text">${item.explanation}</p>
-              innerHTML = cards.join("");
-            }        </div>
+              </div>
               <a class="btn btn-primary" href="post.html?date=${item.date}" id = "btn-card">Ver más...</a>
               <div class="card-footer">
                 <small class="text-body-secondary">${dateFormated}</small>
@@ -48,23 +65,19 @@ fetch(apiCount)
     const itemDate = new Date(date) //lo convertimos en objeto
     const diffDates = currentDate.getTime() - itemDate.getTime();//calcular la diferencia en milisiegundos
     const diffDays = Math.floor(diffDates / (1000 * 60 * 60 * 24));
-    // console.log(days[itemDate.getDay()])
-    // console.log(diffDays)
-
-    if (itemDate.getTime() > currentDate.getTime) {
-      console.log("La fecha es mayor a hoy")
-    } else {
-      console.log("La fecha es menor a hoy")
-    }
-
-    if (diffDays === 0) {
+     console.log(days[itemDate.getDay()])
+    console.log(diffDays)
+    
+    if (diffDays === 1) {
       return "Publicado Recientemente"
-    }else if (diffDays === 1){
+    }else if (diffDays === 2){
       return "Publicado Ayer"
     }else if (diffDays > 1 && diffDays < 6){
       // console.log(days[itemDate.getDay()])
       // console.log(`Pubblicado el dia ${days[itemDate.getDay()]}`)
       return `Pubblicado el dia ${days[itemDate.getDay()]}`
+    } else{
+      return 'Publicado'
     }
   };
  
