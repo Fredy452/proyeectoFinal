@@ -1,21 +1,3 @@
-// Probando buscador
-// document.getElementById('searchInput').addEventListener('keyup', () => {
-//   const searcTerm = document.getElementById('searchInput').value;
-//   const urlSearch = `https://images-api.nasa.gov/search?q=${searcTerm}`;
-  
-//   fetch(urlSearch)
-//     .then(response => response.json())
-//     .then(data => {
-//       const items = data.collection.items;
-//       const titles = items.map(
-//         item => item.data[0].title
-//       );
-//       console.log(titles);
-//     })
-//     .catch(err => console.log(err));
-// });
-
-
 /*Sección Publicaciones Recienes */
 // Obtenemos las fechas de inicio y finalización para enviar a la api
 const startD = new Date();
@@ -46,7 +28,8 @@ fetch(apiCount)
           <div class="card-body">
               <h5 class="card-title">${item.title}</h5>
               <p class="card-text">${item.explanation}</p>
-              </div>
+              innerHTML = cards.join("");
+            }        </div>
               <a class="btn btn-primary" href="post.html?date=${item.date}" id = "btn-card">Ver más...</a>
               <div class="card-footer">
                 <small class="text-body-secondary">${dateFormated}</small>
